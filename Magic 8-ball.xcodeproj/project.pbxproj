@@ -14,6 +14,7 @@
 		21C35B112798DEC400943808 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 21C35B102798DEC400943808 /* Assets.xcassets */; };
 		21C35B142798DEC400943808 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 21C35B122798DEC400943808 /* LaunchScreen.storyboard */; };
 		21C35B1C2798DF2700943808 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 21C35B1B2798DF2700943808 /* README.md */; };
+		21C35B1E2798DF4400943808 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 21C35B1D2798DF4400943808 /* .gitignore */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		21C35B132798DEC400943808 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		21C35B152798DEC400943808 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		21C35B1B2798DF2700943808 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		21C35B1D2798DF4400943808 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -42,6 +44,7 @@
 		21C35AFB2798DEC400943808 = {
 			isa = PBXGroup;
 			children = (
+				21C35B1D2798DF4400943808 /* .gitignore */,
 				21C35B1B2798DF2700943808 /* README.md */,
 				21C35B062798DEC400943808 /* Magic 8-ball */,
 				21C35B052798DEC400943808 /* Products */,
@@ -128,6 +131,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				21C35B1E2798DF4400943808 /* .gitignore in Resources */,
 				21C35B142798DEC400943808 /* LaunchScreen.storyboard in Resources */,
 				21C35B112798DEC400943808 /* Assets.xcassets in Resources */,
 				21C35B1C2798DF2700943808 /* README.md in Resources */,
