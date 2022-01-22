@@ -55,6 +55,9 @@
                             <constraint firstAttribute="bottom" secondItem="V0H-p7-JwN" secondAttribute="bottom" id="qJg-II-kbv"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="answerText" destination="9WB-sX-CKY" id="gXG-ir-A6b"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
