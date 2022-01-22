@@ -16,9 +16,23 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        answerManager.delegate = self
     }
     
     override func motionBegan(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
         answerManager.performRequest()
+    }
+}
+
+// MARK: - AnswerManagerDelegate
+
+extension MainViewController: AnswerManagerDelegate {
+    
+    func didUpdateAnswer(_ answer: String) {
+        print(answer)
+    }
+    
+    func didFailWithError(_ error: Error) {
+        print(error)
     }
 }

@@ -7,8 +7,15 @@
 
 import Foundation
 
+protocol AnswerManagerDelegate {
+    func didUpdateAnswer(_ answer: String)
+    func didFailWithError(_ error: Error)
+}
+
 struct AnswerManager {
     let answerURL = "https://8ball.delegator.com/magic/JSON/should"
+    
+    var delegate: AnswerManagerDelegate?
     
     // Make the API Request
     func performRequest() {
@@ -17,12 +24,14 @@ struct AnswerManager {
             
             let task = session.dataTask(with: url) { data, response, error in
                 if error != nil {
-                    print(error!)
+                    self.delegate?.didFailWithError(error!)
                     return
                 }
                 
                 if let safeData = data {
-                    self.parseJSON(safeData)
+                    if let answer = self.parseJSON(safeData) {
+                        self.delegate?.didUpdateAnswer(answer)
+                    }
                 }
             }
             
@@ -31,14 +40,15 @@ struct AnswerManager {
     }
     
     // Parse the JSON data
-    func parseJSON(_ answerData: Data) {
+    func parseJSON(_ answerData: Data) -> String? {
         let decoder = JSONDecoder()
         
         do {
             let decodedData = try decoder.decode(AnswerData.self, from: answerData)
-            print(decodedData.magic.answer)
+            return decodedData.magic.answer
         } catch {
-            print(error)
+            delegate?.didFailWithError(error)
+            return nil
         }
     }
 }
