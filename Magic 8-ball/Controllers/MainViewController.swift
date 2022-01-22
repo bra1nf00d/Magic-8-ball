@@ -19,6 +19,6 @@ class MainViewController: UIViewController {
     }
     
     override func motionBegan(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
-        print("Motion began")
+        answerManager.performRequest()
     }
 }
