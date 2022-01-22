@@ -22,12 +22,23 @@ struct AnswerManager {
                 }
                 
                 if let safeData = data {
-                    let dataString = String(data: safeData, encoding: .utf8)
-                    print(dataString!)
+                    self.parseJSON(safeData)
                 }
             }
             
             task.resume()
+        }
+    }
+    
+    // Parse the JSON data
+    func parseJSON(_ answerData: Data) {
+        let decoder = JSONDecoder()
+        
+        do {
+            let decodedData = try decoder.decode(AnswerData.self, from: answerData)
+            print(decodedData.magic.answer)
+        } catch {
+            print(error)
         }
     }
 }
