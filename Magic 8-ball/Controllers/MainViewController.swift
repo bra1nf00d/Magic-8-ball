@@ -29,7 +29,9 @@ class MainViewController: UIViewController {
 extension MainViewController: AnswerManagerDelegate {
     
     func didUpdateAnswer(_ answer: String) {
-        print(answer)
+        DispatchQueue.main.async {
+            self.answerText.text = answer
+        }
     }
     
     func didFailWithError(_ error: Error) {
