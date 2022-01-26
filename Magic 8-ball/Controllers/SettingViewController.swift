@@ -9,11 +9,16 @@ import UIKit
 
 class SettingViewController: UITableViewController {
 
-    var answers = ["Just do it", "Change your mind"]
+    var answers: [String] = []
+    
+    let defaults = UserDefaults.standard
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        if let safeAnswers = defaults.array(forKey: "Answers") as? [String] {
+            answers = safeAnswers
+        }
     }
     
     // MARK: - TableView Datasource Methods
@@ -41,6 +46,8 @@ class SettingViewController: UITableViewController {
         let action = UIAlertAction(title: "Add", style: .default) { (action) in
             
             self.answers.append(textField.text!)
+            
+            self.defaults.set(self.answers, forKey: "Answers")
             
             self.tableView.reloadData()
         }
