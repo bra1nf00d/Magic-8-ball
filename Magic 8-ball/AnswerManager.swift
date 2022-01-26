@@ -15,6 +15,8 @@ protocol AnswerManagerDelegate {
 struct AnswerManager {
     let answerURL = "https://8ball.delegator.com/magic/JSON/should"
     
+    let defaults = UserDefaults.standard
+    
     var delegate: AnswerManagerDelegate?
     
     // Make the API Request
@@ -24,6 +26,14 @@ struct AnswerManager {
             
             let task = session.dataTask(with: url) { data, response, error in
                 if error != nil {
+                    // Trying get answer from local storage
+                    if let answers = defaults.array(forKey: "Answers") as? [String] {
+                        DispatchQueue.main.async {
+                            self.delegate?.didUpdateAnswer(answers.randomElement()!)
+                        }
+                        return
+                    }
+                    
                     self.delegate?.didFailWithError(error!)
                     return
                 }
@@ -49,7 +59,6 @@ struct AnswerManager {
             let decodedData = try decoder.decode(AnswerData.self, from: answerData)
             return decodedData.magic.answer
         } catch {
-            delegate?.didFailWithError(error)
             return nil
         }
     }
