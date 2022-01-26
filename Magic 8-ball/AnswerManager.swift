@@ -9,11 +9,12 @@ import Foundation
 
 protocol AnswerManagerDelegate {
     func didUpdateAnswer(_ answer: String)
-    func didFailWithError(_ error: Error)
+    func didFailWithError(_ errorMessage: String)
 }
 
 struct AnswerManager {
-    let answerURL = "https://8ball.delegator.com/magic/JSON/should"
+    private let answerURL = "https://8ball.delegator.com/magic/JSON/should"
+    private let defaults = UserDefaults.standard
     
     var delegate: AnswerManagerDelegate?
     
@@ -24,13 +25,26 @@ struct AnswerManager {
             
             let task = session.dataTask(with: url) { data, response, error in
                 if error != nil {
-                    self.delegate?.didFailWithError(error!)
+                    // Trying get answer from local storage
+                    if let answers = defaults.array(forKey: Constants.localStorage) as? [String] {
+                        DispatchQueue.main.async {
+                            self.delegate?.didUpdateAnswer(answers.randomElement()!)
+                        }
+                        return
+                    }
+                    
+                    // Showing the error in a popup alert
+                    DispatchQueue.main.async {
+                        self.delegate?.didFailWithError("Сheck your internet connection or add the answer yourself in settings")
+                    }
                     return
                 }
                 
                 if let safeData = data {
                     if let answer = self.parseJSON(safeData) {
-                        self.delegate?.didUpdateAnswer(answer)
+                        DispatchQueue.main.async {
+                            self.delegate?.didUpdateAnswer(answer)
+                        }
                     }
                 }
             }
@@ -40,14 +54,13 @@ struct AnswerManager {
     }
     
     // Parse the JSON data
-    func parseJSON(_ answerData: Data) -> String? {
+    private func parseJSON(_ answerData: Data) -> String? {
         let decoder = JSONDecoder()
         
         do {
             let decodedData = try decoder.decode(AnswerData.self, from: answerData)
             return decodedData.magic.answer
         } catch {
-            delegate?.didFailWithError(error)
             return nil
         }
     }

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		2139B4F4279C806F00EAB2B8 /* AnswerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2139B4F3279C806F00EAB2B8 /* AnswerManager.swift */; };
 		2139B4FA279C962700EAB2B8 /* AnswerData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2139B4F9279C962700EAB2B8 /* AnswerData.swift */; };
+		2182140827A204B800202A67 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2182140727A204B800202A67 /* Constants.swift */; };
 		21C35B082798DEC400943808 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C35B072798DEC400943808 /* AppDelegate.swift */; };
 		21C35B0A2798DEC400943808 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C35B092798DEC400943808 /* SceneDelegate.swift */; };
 		21C35B0F2798DEC400943808 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 21C35B0D2798DEC400943808 /* Main.storyboard */; };
@@ -17,12 +18,13 @@
 		21C35B1C2798DF2700943808 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 21C35B1B2798DF2700943808 /* README.md */; };
 		21C35B1E2798DF4400943808 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 21C35B1D2798DF4400943808 /* .gitignore */; };
 		21C35B242798E0E500943808 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C35B232798E0E500943808 /* MainViewController.swift */; };
-		21C35B262798E1EB00943808 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C35B252798E1EB00943808 /* SettingViewController.swift */; };
+		21C35B262798E1EB00943808 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C35B252798E1EB00943808 /* SettingsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		2139B4F3279C806F00EAB2B8 /* AnswerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AnswerManager.swift; path = "Magic 8-ball/AnswerManager.swift"; sourceTree = SOURCE_ROOT; };
 		2139B4F9279C962700EAB2B8 /* AnswerData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AnswerData.swift; path = "Magic 8-ball/AnswerData.swift"; sourceTree = SOURCE_ROOT; };
+		2182140727A204B800202A67 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		21C35B042798DEC400943808 /* Magic 8-ball.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Magic 8-ball.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		21C35B072798DEC400943808 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		21C35B092798DEC400943808 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -33,7 +35,7 @@
 		21C35B1B2798DF2700943808 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		21C35B1D2798DF4400943808 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		21C35B232798E0E500943808 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
-		21C35B252798E1EB00943808 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		21C35B252798E1EB00943808 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +77,7 @@
 				21C35B222798E0BC00943808 /* Controllers */,
 				21C35B102798DEC400943808 /* Assets.xcassets */,
 				21C35B122798DEC400943808 /* LaunchScreen.storyboard */,
+				2182140727A204B800202A67 /* Constants.swift */,
 				21C35B152798DEC400943808 /* Info.plist */,
 			);
 			path = "Magic 8-ball";
@@ -101,7 +104,7 @@
 			isa = PBXGroup;
 			children = (
 				21C35B232798E0E500943808 /* MainViewController.swift */,
-				21C35B252798E1EB00943808 /* SettingViewController.swift */,
+				21C35B252798E1EB00943808 /* SettingsViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -183,8 +186,9 @@
 				21C35B242798E0E500943808 /* MainViewController.swift in Sources */,
 				21C35B082798DEC400943808 /* AppDelegate.swift in Sources */,
 				2139B4FA279C962700EAB2B8 /* AnswerData.swift in Sources */,
+				2182140827A204B800202A67 /* Constants.swift in Sources */,
 				21C35B0A2798DEC400943808 /* SceneDelegate.swift in Sources */,
-				21C35B262798E1EB00943808 /* SettingViewController.swift in Sources */,
+				21C35B262798E1EB00943808 /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

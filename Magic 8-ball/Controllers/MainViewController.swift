@@ -8,9 +8,7 @@
 import UIKit
 
 class MainViewController: UIViewController {
-    
     @IBOutlet weak var answerText: UILabel!
-    
     var answerManager = AnswerManager()
     
     override func viewDidLoad() {
@@ -18,6 +16,8 @@ class MainViewController: UIViewController {
 
         answerManager.delegate = self
     }
+    
+    // MARK: - UIResponder Motion Method
     
     override func motionBegan(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
         answerManager.performRequest()
@@ -29,12 +29,15 @@ class MainViewController: UIViewController {
 extension MainViewController: AnswerManagerDelegate {
     
     func didUpdateAnswer(_ answer: String) {
-        DispatchQueue.main.async {
-            self.answerText.text = answer
-        }
+        self.answerText.text = answer
     }
     
-    func didFailWithError(_ error: Error) {
-        print(error)
+    func didFailWithError(_ errorMessage: String) {
+        let alert = UIAlertController(title: "No answer found", message: errorMessage, preferredStyle: .alert)
+        let action = UIAlertAction(title: "Okay", style: .default)
+        
+        alert.addAction(action)
+        
+        present(alert, animated: true, completion: nil)
     }
 }

@@ -7,16 +7,14 @@
 
 import UIKit
 
-class SettingViewController: UITableViewController {
-
-    var answers: [String] = []
-    
-    let defaults = UserDefaults.standard
+class SettingsViewController: UITableViewController {
+    private var answers: [String] = []
+    private let defaults = UserDefaults.standard
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        if let safeAnswers = defaults.array(forKey: "Answers") as? [String] {
+        if let safeAnswers = defaults.array(forKey: Constants.localStorage) as? [String] {
             answers = safeAnswers
         }
     }
@@ -28,7 +26,7 @@ class SettingViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "AnswerCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: Constants.cellIdentifier, for: indexPath)
         
         cell.textLabel?.text = answers[indexPath.row]
         
@@ -38,16 +36,11 @@ class SettingViewController: UITableViewController {
     // MARK: - Add New Hardcoded Answers
     
     @IBAction func addButtonPressed(_ sender: UIBarButtonItem) {
-        
         var textField = UITextField()
-        
         let alert = UIAlertController(title: "Add New Answer", message: "", preferredStyle: .alert)
-     
         let action = UIAlertAction(title: "Add", style: .default) { (action) in
-            
             self.answers.append(textField.text!)
-            
-            self.defaults.set(self.answers, forKey: "Answers")
+            self.defaults.set(self.answers, forKey: Constants.localStorage)
             
             self.tableView.reloadData()
         }
