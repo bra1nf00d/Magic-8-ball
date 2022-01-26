@@ -17,7 +17,7 @@
 		21C35B1C2798DF2700943808 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 21C35B1B2798DF2700943808 /* README.md */; };
 		21C35B1E2798DF4400943808 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 21C35B1D2798DF4400943808 /* .gitignore */; };
 		21C35B242798E0E500943808 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C35B232798E0E500943808 /* MainViewController.swift */; };
-		21C35B262798E1EB00943808 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C35B252798E1EB00943808 /* SettingViewController.swift */; };
+		21C35B262798E1EB00943808 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C35B252798E1EB00943808 /* SettingsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,7 +33,7 @@
 		21C35B1B2798DF2700943808 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		21C35B1D2798DF4400943808 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		21C35B232798E0E500943808 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
-		21C35B252798E1EB00943808 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		21C35B252798E1EB00943808 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,7 +101,7 @@
 			isa = PBXGroup;
 			children = (
 				21C35B232798E0E500943808 /* MainViewController.swift */,
-				21C35B252798E1EB00943808 /* SettingViewController.swift */,
+				21C35B252798E1EB00943808 /* SettingsViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -184,7 +184,7 @@
 				21C35B082798DEC400943808 /* AppDelegate.swift in Sources */,
 				2139B4FA279C962700EAB2B8 /* AnswerData.swift in Sources */,
 				21C35B0A2798DEC400943808 /* SceneDelegate.swift in Sources */,
-				21C35B262798E1EB00943808 /* SettingViewController.swift in Sources */,
+				21C35B262798E1EB00943808 /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

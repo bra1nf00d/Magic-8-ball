@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SettingViewController: UITableViewController {
+class SettingsViewController: UITableViewController {
     private var answers: [String] = []
     private let defaults = UserDefaults.standard
     

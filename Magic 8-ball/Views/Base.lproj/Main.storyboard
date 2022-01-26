@@ -61,10 +61,10 @@
             </objects>
             <point key="canvasLocation" x="921.73913043478262" y="97.767857142857139"/>
         </scene>
-        <!--Setting View Controller-->
+        <!--Settings View Controller-->
         <scene sceneID="wS6-3Y-dNi">
             <objects>
-                <tableViewController id="jz8-N5-hYU" customClass="SettingViewController" customModule="Magic_8_ball" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="jz8-N5-hYU" customClass="SettingsViewController" customModule="Magic_8_ball" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="JW0-Np-mBR">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
