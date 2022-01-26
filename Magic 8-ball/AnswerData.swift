@@ -7,10 +7,10 @@
 
 import Foundation
 
-struct AnswerData: Codable {
+struct AnswerData: Decodable {
     let magic: Magic
 }
 
-struct Magic: Codable {
+struct Magic: Decodable {
     let answer: String
 }
