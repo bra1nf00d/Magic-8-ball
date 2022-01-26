@@ -14,7 +14,7 @@ class SettingsViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        if let safeAnswers = defaults.array(forKey: "Answers") as? [String] {
+        if let safeAnswers = defaults.array(forKey: Constants.localStorage) as? [String] {
             answers = safeAnswers
         }
     }
@@ -26,7 +26,7 @@ class SettingsViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "AnswerCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: Constants.cellIdentifier, for: indexPath)
         
         cell.textLabel?.text = answers[indexPath.row]
         
@@ -40,7 +40,7 @@ class SettingsViewController: UITableViewController {
         let alert = UIAlertController(title: "Add New Answer", message: "", preferredStyle: .alert)
         let action = UIAlertAction(title: "Add", style: .default) { (action) in
             self.answers.append(textField.text!)
-            self.defaults.set(self.answers, forKey: "Answers")
+            self.defaults.set(self.answers, forKey: Constants.localStorage)
             
             self.tableView.reloadData()
         }
