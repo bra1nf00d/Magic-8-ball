@@ -13,9 +13,9 @@ protocol AnswerManagerDelegate {
 }
 
 struct AnswerManager {
-    let answerURL = "https://8ball.delegator.com/magic/JSON/should"
+    private let answerURL = "https://8ball.delegator.com/magic/JSON/should"
     
-    let defaults = UserDefaults.standard
+    private let defaults = UserDefaults.standard
     
     var delegate: AnswerManagerDelegate?
     
@@ -54,7 +54,7 @@ struct AnswerManager {
     }
     
     // Parse the JSON data
-    func parseJSON(_ answerData: Data) -> String? {
+    private func parseJSON(_ answerData: Data) -> String? {
         let decoder = JSONDecoder()
         
         do {

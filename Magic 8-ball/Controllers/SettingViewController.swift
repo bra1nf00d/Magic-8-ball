@@ -9,9 +9,9 @@ import UIKit
 
 class SettingViewController: UITableViewController {
 
-    var answers: [String] = []
+    private var answers: [String] = []
     
-    let defaults = UserDefaults.standard
+    private let defaults = UserDefaults.standard
     
     override func viewDidLoad() {
         super.viewDidLoad()
