@@ -9,7 +9,7 @@ import UIKit
 
 class SettingViewController: UITableViewController {
 
-    let answers = ["Just do it", "Change your mind"]
+    var answers = ["Just do it", "Change your mind"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,5 +28,31 @@ class SettingViewController: UITableViewController {
         cell.textLabel?.text = answers[indexPath.row]
         
         return cell
+    }
+    
+    // MARK: - Add New Hardcoded Answers
+    
+    @IBAction func addButtonPressed(_ sender: UIBarButtonItem) {
+        
+        var textField = UITextField()
+        
+        let alert = UIAlertController(title: "Add New Answer", message: "", preferredStyle: .alert)
+     
+        let action = UIAlertAction(title: "Add", style: .default) { (action) in
+            
+            self.answers.append(textField.text!)
+            
+            self.tableView.reloadData()
+        }
+        
+        alert.addAction(action)
+        
+        alert.addTextField { (alertTextField) in
+            alertTextField.placeholder = "Create new answer"
+            
+            textField = alertTextField
+        }
+        
+        present(alert, animated: true, completion: nil)
     }
 }
