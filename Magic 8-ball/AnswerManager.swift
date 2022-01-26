@@ -9,7 +9,7 @@ import Foundation
 
 protocol AnswerManagerDelegate {
     func didUpdateAnswer(_ answer: String)
-    func didFailWithError(_ error: Error)
+    func didFailWithError(_ errorMessage: String)
 }
 
 struct AnswerManager {
@@ -34,7 +34,9 @@ struct AnswerManager {
                         return
                     }
                     
-                    self.delegate?.didFailWithError(error!)
+                    DispatchQueue.main.async {
+                        self.delegate?.didFailWithError("Сheck your internet connection or add the answer yourself in settings")
+                    }
                     return
                 }
                 
