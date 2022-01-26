@@ -8,9 +8,7 @@
 import UIKit
 
 class SettingViewController: UITableViewController {
-
     private var answers: [String] = []
-    
     private let defaults = UserDefaults.standard
     
     override func viewDidLoad() {
@@ -38,15 +36,10 @@ class SettingViewController: UITableViewController {
     // MARK: - Add New Hardcoded Answers
     
     @IBAction func addButtonPressed(_ sender: UIBarButtonItem) {
-        
         var textField = UITextField()
-        
         let alert = UIAlertController(title: "Add New Answer", message: "", preferredStyle: .alert)
-     
         let action = UIAlertAction(title: "Add", style: .default) { (action) in
-            
             self.answers.append(textField.text!)
-            
             self.defaults.set(self.answers, forKey: "Answers")
             
             self.tableView.reloadData()

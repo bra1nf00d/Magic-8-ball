@@ -14,7 +14,6 @@ protocol AnswerManagerDelegate {
 
 struct AnswerManager {
     private let answerURL = "https://8ball.delegator.com/magic/JSON/should"
-    
     private let defaults = UserDefaults.standard
     
     var delegate: AnswerManagerDelegate?
@@ -34,6 +33,7 @@ struct AnswerManager {
                         return
                     }
                     
+                    // Showing the error in a popup alert
                     DispatchQueue.main.async {
                         self.delegate?.didFailWithError("Сheck your internet connection or add the answer yourself in settings")
                     }

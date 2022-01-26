@@ -8,9 +8,7 @@
 import UIKit
 
 class MainViewController: UIViewController {
-    
     @IBOutlet weak var answerText: UILabel!
-    
     var answerManager = AnswerManager()
     
     override func viewDidLoad() {
