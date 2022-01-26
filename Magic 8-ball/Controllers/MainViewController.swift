@@ -19,6 +19,8 @@ class MainViewController: UIViewController {
         answerManager.delegate = self
     }
     
+    // MARK: - UIResponder Motion Method
+    
     override func motionBegan(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
         answerManager.performRequest()
     }
@@ -29,9 +31,7 @@ class MainViewController: UIViewController {
 extension MainViewController: AnswerManagerDelegate {
     
     func didUpdateAnswer(_ answer: String) {
-        DispatchQueue.main.async {
-            self.answerText.text = answer
-        }
+        self.answerText.text = answer
     }
     
     func didFailWithError(_ error: Error) {

@@ -30,7 +30,9 @@ struct AnswerManager {
                 
                 if let safeData = data {
                     if let answer = self.parseJSON(safeData) {
-                        self.delegate?.didUpdateAnswer(answer)
+                        DispatchQueue.main.async {
+                            self.delegate?.didUpdateAnswer(answer)
+                        }
                     }
                 }
             }
