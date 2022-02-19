@@ -32,7 +32,7 @@ extension MainViewController: AnswerManagerDelegate {
         self.answerText.text = answer
     }
     
-    func didFailWithError(_ errorMessage: String) {
+    func didFailWithError(message errorMessage: String) {
         let alert = UIAlertController(title: "No answer found", message: errorMessage, preferredStyle: .alert)
         let action = UIAlertAction(title: "Okay", style: .default)
         
