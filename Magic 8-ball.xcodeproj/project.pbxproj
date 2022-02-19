@@ -18,6 +18,7 @@
 		21C35B1E2798DF4400943808 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 21C35B1D2798DF4400943808 /* .gitignore */; };
 		21C35B242798E0E500943808 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C35B232798E0E500943808 /* MainViewController.swift */; };
 		21C35B262798E1EB00943808 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C35B252798E1EB00943808 /* SettingsViewController.swift */; };
+		A8BC86A6B6E05B2C4F11DFF8 /* Pods_Magic_8_ball.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 667F908A68BA894CDF15BA36 /* Pods_Magic_8_ball.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,9 @@
 		21C35B1D2798DF4400943808 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		21C35B232798E0E500943808 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		21C35B252798E1EB00943808 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		56C765D30363C769C45A9C4B /* Pods-Magic 8-ball.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Magic 8-ball.release.xcconfig"; path = "Target Support Files/Pods-Magic 8-ball/Pods-Magic 8-ball.release.xcconfig"; sourceTree = "<group>"; };
+		667F908A68BA894CDF15BA36 /* Pods_Magic_8_ball.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Magic_8_ball.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C4F6CC17C74427819C9116DA /* Pods-Magic 8-ball.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Magic 8-ball.debug.xcconfig"; path = "Target Support Files/Pods-Magic 8-ball/Pods-Magic 8-ball.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -41,6 +45,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A8BC86A6B6E05B2C4F11DFF8 /* Pods_Magic_8_ball.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -53,6 +58,8 @@
 				21C35B1D2798DF4400943808 /* .gitignore */,
 				21C35B062798DEC400943808 /* Magic 8-ball */,
 				21C35B052798DEC400943808 /* Products */,
+				795BFAD6593DA3B35BAAE50A /* Pods */,
+				2A69B32C7666E40B12B1240E /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -106,6 +113,24 @@
 			path = Controllers;
 			sourceTree = "<group>";
 		};
+		2A69B32C7666E40B12B1240E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				667F908A68BA894CDF15BA36 /* Pods_Magic_8_ball.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		795BFAD6593DA3B35BAAE50A /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				C4F6CC17C74427819C9116DA /* Pods-Magic 8-ball.debug.xcconfig */,
+				56C765D30363C769C45A9C4B /* Pods-Magic 8-ball.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -113,9 +138,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 21C35B182798DEC400943808 /* Build configuration list for PBXNativeTarget "Magic 8-ball" */;
 			buildPhases = (
+				905B3E2FD627E824F76EB8A1 /* [CP] Check Pods Manifest.lock */,
 				21C35B002798DEC400943808 /* Sources */,
 				21C35B012798DEC400943808 /* Frameworks */,
 				21C35B022798DEC400943808 /* Resources */,
+				EFA354824EABCC5AFB866438 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -172,6 +199,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		905B3E2FD627E824F76EB8A1 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Magic 8-ball-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EFA354824EABCC5AFB866438 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Magic 8-ball/Pods-Magic 8-ball-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Magic 8-ball/Pods-Magic 8-ball-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Magic 8-ball/Pods-Magic 8-ball-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		21C35B002798DEC400943808 /* Sources */ = {
@@ -328,6 +397,7 @@
 		};
 		21C35B192798DEC400943808 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C4F6CC17C74427819C9116DA /* Pods-Magic 8-ball.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -356,6 +426,7 @@
 		};
 		21C35B1A2798DEC400943808 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 56C765D30363C769C45A9C4B /* Pods-Magic 8-ball.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
