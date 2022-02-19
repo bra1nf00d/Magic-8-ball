@@ -55,4 +55,13 @@ class SettingsViewController: SwipeTableViewController {
         
         present(alert, animated: true, completion: nil)
     }
+    
+    // MARK: - Delete Data from Swipe
+    
+    override func updateModel(at indexPath: IndexPath) {
+        answers.remove(at: indexPath.row)
+        defaults.set(answers, forKey: Constants.localStorage)
+        
+        tableView.reloadData()
+    }
 }
