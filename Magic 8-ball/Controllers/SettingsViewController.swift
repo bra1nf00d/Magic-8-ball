@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SettingsViewController: UITableViewController {
+class SettingsViewController: SwipeTableViewController {
     private var answers: [String] = []
     private let defaults = UserDefaults.standard
     
@@ -26,7 +26,7 @@ class SettingsViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: Constants.cellIdentifier, for: indexPath)
+        let cell = super.tableView(tableView, cellForRowAt: indexPath)
         
         cell.textLabel?.text = answers[indexPath.row]
         
@@ -38,11 +38,11 @@ class SettingsViewController: UITableViewController {
     @IBAction func addButtonPressed(_ sender: UIBarButtonItem) {
         var textField = UITextField()
         let alert = UIAlertController(title: "Add New Answer", message: "", preferredStyle: .alert)
-        let action = UIAlertAction(title: "Add", style: .default) { (action) in
-            self.answers.append(textField.text!)
-            self.defaults.set(self.answers, forKey: Constants.localStorage)
+        let action = UIAlertAction(title: "Add", style: .default) { [weak self] (action) in
+            self?.answers.append(textField.text!)
+            self?.defaults.set(self?.answers, forKey: Constants.localStorage)
             
-            self.tableView.reloadData()
+            self?.tableView.reloadData()
         }
         
         alert.addAction(action)
@@ -54,5 +54,14 @@ class SettingsViewController: UITableViewController {
         }
         
         present(alert, animated: true, completion: nil)
+    }
+    
+    // MARK: - Delete Data from Swipe
+    
+    override func updateModel(at indexPath: IndexPath) {
+        answers.remove(at: indexPath.row)
+        defaults.set(answers, forKey: Constants.localStorage)
+        
+        tableView.reloadData()
     }
 }

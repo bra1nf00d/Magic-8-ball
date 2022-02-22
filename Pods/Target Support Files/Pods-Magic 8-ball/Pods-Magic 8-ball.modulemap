@@ -1,0 +1,6 @@
+framework module Pods_Magic_8_ball {
+  umbrella header "Pods-Magic 8-ball-umbrella.h"
+
+  export *
+  module * { export * }
+}

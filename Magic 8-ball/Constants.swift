@@ -6,6 +6,6 @@
 //
 
 struct Constants {
-    static let cellIdentifier = "AnswerCell"
+    static let cellIdentifier = "Cell"
     static let localStorage = "Answers"
 }
