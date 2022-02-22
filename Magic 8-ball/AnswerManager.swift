@@ -25,7 +25,6 @@ struct AnswerManager {
             
             let task = session.dataTask(with: url) { data, response, error in
                 if error != nil {
-                    // Trying get answer from local storage
                     if let answers = defaults.array(forKey: Constants.localStorage) as? [String] {
                         DispatchQueue.main.async {
                             self.delegate?.didUpdateAnswer(answers.randomElement()!)
@@ -33,7 +32,6 @@ struct AnswerManager {
                         return
                     }
                     
-                    // Showing the error in a popup alert
                     DispatchQueue.main.async {
                         self.delegate?.didFailWithError(message: "Сheck your internet connection or add the answer yourself in settings")
                     }
