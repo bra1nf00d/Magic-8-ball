@@ -7,21 +7,16 @@
 
 import Foundation
 
-protocol NetworkAnswerClientDelegate {
+protocol AnswerManagerDelegate {
     func didUpdateAnswer(_ answer: String)
     func didFailWithError(message errorMessage: String)
 }
 
-protocol NetworkAnswerProvider {
-    var delegate: NetworkAnswerClientDelegate? { get set }
-    var storage: UserDefaultAnswersProvider? { get set }
-    func performRequest()
-}
-
-struct NetworkAnswerClient: NetworkAnswerProvider {
-    private let answerURL = Constants.answerURL
-    var delegate: NetworkAnswerClientDelegate?
-    var storage: UserDefaultAnswersProvider?
+struct AnswerManager {
+    private let answerURL = "https://8ball.delegator.com/magic/JSON/should"
+    private let defaults = UserDefaults.standard
+    
+    var delegate: AnswerManagerDelegate?
     
     // Make the API Request
     func performRequest() {
@@ -30,10 +25,11 @@ struct NetworkAnswerClient: NetworkAnswerProvider {
             
             let task = session.dataTask(with: url) { data, response, error in
                 if error != nil {
-                    if let storedAnswers = storage?.loadAnswers(forKey: Constants.localStorage) {
+                    if let answers = defaults.array(forKey: Constants.localStorage) as? [String] {
                         DispatchQueue.main.async {
-                            self.delegate?.didUpdateAnswer(storedAnswers.randomElement()!)
+                            self.delegate?.didUpdateAnswer(answers.randomElement()!)
                         }
+                        return
                     }
                     
                     DispatchQueue.main.async {

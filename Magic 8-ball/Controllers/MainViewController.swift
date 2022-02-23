@@ -15,6 +15,19 @@ class MainViewController: UIViewController {
         super.viewDidLoad()
 
         networkAnswerProvider?.delegate = self
+        networkAnswerProvider?.storage = UserDefaultAnswers()
+    }
+    
+    // MARK: - Navigate to Settings Screen
+    @IBAction func goToSettings(_ sender: UIBarButtonItem) {
+        performSegue(withIdentifier: Constants.settingsSequeIdentifier, sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == Constants.settingsSequeIdentifier {
+            let settingsViewController = segue.destination as! SettingsViewController
+            settingsViewController.userDefaultAnswersProvider = UserDefaultAnswers()
+        }
     }
     
     // MARK: - UIResponder Motion Method

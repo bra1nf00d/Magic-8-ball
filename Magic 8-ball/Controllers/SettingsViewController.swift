@@ -9,13 +9,13 @@ import UIKit
 
 class SettingsViewController: SwipeTableViewController {
     private var answers: [String] = []
-    private let defaults = UserDefaults.standard
+    var userDefaultAnswersProvider: UserDefaultAnswersProvider?
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        if let safeAnswers = defaults.array(forKey: Constants.localStorage) as? [String] {
-            answers = safeAnswers
+        if let storedAnswers = userDefaultAnswersProvider?.loadAnswers(forKey: Constants.localStorage) {
+            answers = storedAnswers
         }
     }
     
@@ -40,7 +40,7 @@ class SettingsViewController: SwipeTableViewController {
         let alert = UIAlertController(title: "Add New Answer", message: "", preferredStyle: .alert)
         let action = UIAlertAction(title: "Add", style: .default) { [weak self] (action) in
             self?.answers.append(textField.text!)
-            self?.defaults.set(self?.answers, forKey: Constants.localStorage)
+            self?.userDefaultAnswersProvider?.saveAnswers(self?.answers, forKey: Constants.localStorage)
             
             self?.tableView.reloadData()
         }
@@ -60,7 +60,7 @@ class SettingsViewController: SwipeTableViewController {
     
     override func updateModel(at indexPath: IndexPath) {
         answers.remove(at: indexPath.row)
-        defaults.set(answers, forKey: Constants.localStorage)
+        userDefaultAnswersProvider?.saveAnswers(answers, forKey: Constants.localStorage)
         
         tableView.reloadData()
     }
