@@ -9,24 +9,24 @@ import UIKit
 
 class MainViewController: UIViewController {
     @IBOutlet weak var answerText: UILabel!
-    var answerManager = AnswerManager()
+    var networkAnswerProvider: NetworkAnswerProvider?
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        answerManager.delegate = self
+        networkAnswerProvider?.delegate = self
     }
     
     // MARK: - UIResponder Motion Method
     
     override func motionBegan(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
-        answerManager.performRequest()
+        networkAnswerProvider?.performRequest()
     }
 }
 
-// MARK: - AnswerManagerDelegate
+// MARK: - NetworkAnswerClientDelegate
 
-extension MainViewController: AnswerManagerDelegate {
+extension MainViewController: NetworkAnswerClientDelegate {
     
     func didUpdateAnswer(_ answer: String) {
         self.answerText.text = answer

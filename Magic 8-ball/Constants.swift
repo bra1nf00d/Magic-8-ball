@@ -8,4 +8,5 @@
 struct Constants {
     static let cellIdentifier = "Cell"
     static let localStorage = "Answers"
+    static let answerURL = "https://8ball.delegator.com/magic/JSON/should"
 }

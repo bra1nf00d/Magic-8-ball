@@ -7,16 +7,21 @@
 
 import Foundation
 
-protocol AnswerManagerDelegate {
+protocol NetworkAnswerClientDelegate {
     func didUpdateAnswer(_ answer: String)
     func didFailWithError(message errorMessage: String)
 }
 
-struct AnswerManager {
-    private let answerURL = "https://8ball.delegator.com/magic/JSON/should"
+protocol NetworkAnswerProvider {
+    var delegate: NetworkAnswerClientDelegate? { get set }
+    func performRequest()
+}
+
+struct NetworkAnswerClient: NetworkAnswerProvider {
+    private let answerURL = Constants.answerURL
     private let defaults = UserDefaults.standard
     
-    var delegate: AnswerManagerDelegate?
+    var delegate: NetworkAnswerClientDelegate?
     
     // Make the API Request
     func performRequest() {
