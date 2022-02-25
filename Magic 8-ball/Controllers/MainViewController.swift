@@ -9,13 +9,12 @@ import UIKit
 
 class MainViewController: UIViewController {
     @IBOutlet weak var answerText: UILabel!
-    var networkAnswerProvider: NetworkAnswerProvider?
+    var service: AnswerServiceProvider?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        networkAnswerProvider?.delegate = self
-        networkAnswerProvider?.storage = UserDefaultAnswers()
+        
+        service?.delegate = self
     }
     
     // MARK: - Navigate to Settings Screen
@@ -33,24 +32,23 @@ class MainViewController: UIViewController {
     // MARK: - UIResponder Motion Method
     
     override func motionBegan(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
-        networkAnswerProvider?.performRequest()
+        service?.loadAnswer()
+        print("Shook")
     }
 }
 
-// MARK: - NetworkAnswerClientDelegate
+extension MainViewController: AnswerServiceDelegate {
 
-extension MainViewController: NetworkAnswerClientDelegate {
-    
     func didUpdateAnswer(_ answer: String) {
         self.answerText.text = answer
     }
-    
+
     func didFailWithError(message errorMessage: String) {
         let alert = UIAlertController(title: "No answer found", message: errorMessage, preferredStyle: .alert)
         let action = UIAlertAction(title: "Okay", style: .default)
-        
+
         alert.addAction(action)
-        
+
         present(alert, animated: true, completion: nil)
     }
 }

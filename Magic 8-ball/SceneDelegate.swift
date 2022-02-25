@@ -16,7 +16,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let initialViewController = mainStoryboard.instantiateViewController(withIdentifier: "mainViewController")
         if let mainViewController = initialViewController as? MainViewController {
-            mainViewController.networkAnswerProvider = NetworkAnswerClient()
+            mainViewController.service = AnswerService(client: AnswerClient(), storage: UserDefaultAnswers())
         }
         let navigationController = UINavigationController(rootViewController: initialViewController)
         
