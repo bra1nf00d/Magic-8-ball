@@ -7,9 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2139B4F4279C806F00EAB2B8 /* AnswerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2139B4F3279C806F00EAB2B8 /* AnswerManager.swift */; };
+		2131B73527C840CB0030F8C2 /* AnswerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2131B73427C840CB0030F8C2 /* AnswerService.swift */; };
+		2139B4F4279C806F00EAB2B8 /* AnswerClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2139B4F3279C806F00EAB2B8 /* AnswerClient.swift */; };
 		2139B4FA279C962700EAB2B8 /* AnswerData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2139B4F9279C962700EAB2B8 /* AnswerData.swift */; };
 		2182140827A204B800202A67 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2182140727A204B800202A67 /* Constants.swift */; };
+		21B1FF0327C66D1D00726F33 /* UserDefaultAnswers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21B1FF0227C66D1D00726F33 /* UserDefaultAnswers.swift */; };
 		21C35B082798DEC400943808 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C35B072798DEC400943808 /* AppDelegate.swift */; };
 		21C35B0A2798DEC400943808 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C35B092798DEC400943808 /* SceneDelegate.swift */; };
 		21C35B0F2798DEC400943808 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 21C35B0D2798DEC400943808 /* Main.storyboard */; };
@@ -23,9 +25,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		2139B4F3279C806F00EAB2B8 /* AnswerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AnswerManager.swift; path = "Magic 8-ball/AnswerManager.swift"; sourceTree = SOURCE_ROOT; };
-		2139B4F9279C962700EAB2B8 /* AnswerData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AnswerData.swift; path = "Magic 8-ball/AnswerData.swift"; sourceTree = SOURCE_ROOT; };
+		2131B73427C840CB0030F8C2 /* AnswerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerService.swift; sourceTree = "<group>"; };
+		2139B4F3279C806F00EAB2B8 /* AnswerClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AnswerClient.swift; path = "Magic 8-ball/Models/Network/AnswerClient.swift"; sourceTree = SOURCE_ROOT; };
+		2139B4F9279C962700EAB2B8 /* AnswerData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AnswerData.swift; path = "Magic 8-ball/Models/Network/AnswerData.swift"; sourceTree = SOURCE_ROOT; };
 		2182140727A204B800202A67 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		21B1FF0227C66D1D00726F33 /* UserDefaultAnswers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultAnswers.swift; sourceTree = "<group>"; };
 		21C35B042798DEC400943808 /* Magic 8-ball.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Magic 8-ball.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		21C35B072798DEC400943808 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		21C35B092798DEC400943808 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -54,6 +58,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		21B1FEFE27C6569B00726F33 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				2139B4F3279C806F00EAB2B8 /* AnswerClient.swift */,
+				2139B4F9279C962700EAB2B8 /* AnswerData.swift */,
+				2131B73427C840CB0030F8C2 /* AnswerService.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		21B1FF0127C66C1900726F33 /* Storage */ = {
+			isa = PBXGroup;
+			children = (
+				21B1FF0227C66D1D00726F33 /* UserDefaultAnswers.swift */,
+			);
+			path = Storage;
+			sourceTree = "<group>";
+		};
 		21C35AFB2798DEC400943808 = {
 			isa = PBXGroup;
 			children = (
@@ -100,8 +122,8 @@
 		21C35B212798E0B700943808 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				2139B4F3279C806F00EAB2B8 /* AnswerManager.swift */,
-				2139B4F9279C962700EAB2B8 /* AnswerData.swift */,
+				21B1FF0127C66C1900726F33 /* Storage */,
+				21B1FEFE27C6569B00726F33 /* Network */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -250,7 +272,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				21D1909727C141C500B5F1A7 /* SwipeTableViewController.swift in Sources */,
-				2139B4F4279C806F00EAB2B8 /* AnswerManager.swift in Sources */,
+				2131B73527C840CB0030F8C2 /* AnswerService.swift in Sources */,
+				2139B4F4279C806F00EAB2B8 /* AnswerClient.swift in Sources */,
+				21B1FF0327C66D1D00726F33 /* UserDefaultAnswers.swift in Sources */,
 				21C35B242798E0E500943808 /* MainViewController.swift in Sources */,
 				21C35B082798DEC400943808 /* AppDelegate.swift in Sources */,
 				2139B4FA279C962700EAB2B8 /* AnswerData.swift in Sources */,

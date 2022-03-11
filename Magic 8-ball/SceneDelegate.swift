@@ -11,7 +11,20 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var window: UIWindow?
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        guard let _ = (scene as? UIWindowScene) else { return }
+        guard let windowScene = (scene as? UIWindowScene) else { return }
+        
+        let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let initialViewController = mainStoryboard.instantiateViewController(withIdentifier: "mainViewController")
+        if let mainViewController = initialViewController as? MainViewController {
+            mainViewController.service = AnswerService(client: AnswerClient(), storage: UserDefaultAnswers())
+        }
+        let navigationController = UINavigationController(rootViewController: initialViewController)
+        
+        let window = UIWindow(windowScene: windowScene)
+        window.rootViewController = navigationController
+        
+        self.window = window
+        window.makeKeyAndVisible()
     }
 }
 

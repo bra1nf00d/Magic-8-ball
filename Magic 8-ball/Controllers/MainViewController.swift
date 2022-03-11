@@ -9,35 +9,46 @@ import UIKit
 
 class MainViewController: UIViewController {
     @IBOutlet weak var answerText: UILabel!
-    var answerManager = AnswerManager()
+    var service: AnswerServiceProvider?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        answerManager.delegate = self
+        
+        service?.delegate = self
+    }
+    
+    // MARK: - Navigate to Settings Screen
+    @IBAction func goToSettings(_ sender: UIBarButtonItem) {
+        performSegue(withIdentifier: Constants.settingsSequeIdentifier, sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == Constants.settingsSequeIdentifier {
+            let settingsViewController = segue.destination as! SettingsViewController
+            settingsViewController.userDefaultAnswersProvider = UserDefaultAnswers()
+        }
     }
     
     // MARK: - UIResponder Motion Method
     
     override func motionBegan(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
-        answerManager.performRequest()
+        service?.loadAnswer()
+        print("Shook")
     }
 }
 
-// MARK: - AnswerManagerDelegate
+extension MainViewController: AnswerServiceDelegate {
 
-extension MainViewController: AnswerManagerDelegate {
-    
     func didUpdateAnswer(_ answer: String) {
         self.answerText.text = answer
     }
-    
+
     func didFailWithError(message errorMessage: String) {
         let alert = UIAlertController(title: "No answer found", message: errorMessage, preferredStyle: .alert)
         let action = UIAlertAction(title: "Okay", style: .default)
-        
+
         alert.addAction(action)
-        
+
         present(alert, animated: true, completion: nil)
     }
 }
