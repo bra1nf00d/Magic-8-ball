@@ -8,21 +8,21 @@
 import Foundation
 
 protocol AnswerClientProvider {
-    func performRequestWithModel<Model: Decodable> (url apiUrl: String, model: Model.Type, completion: @escaping (Model?) -> Void)
+    func performRequestWithModel<Model: Decodable> (url apiUrl: String, model: Model.Type, completion: @escaping (Model?, Error?) -> Void)
 }
 
 struct AnswerClient: AnswerClientProvider {
-    func performRequestWithModel<Model: Decodable> (url apiUrl: String, model: Model.Type, completion: @escaping (Model?) -> Void) {
+    func performRequestWithModel<Model: Decodable> (url apiUrl: String, model: Model.Type, completion: @escaping (Model?, Error?) -> Void) {
         if let url = URL(string: apiUrl) {
             let session = URLSession(configuration: .default)
             let task = session.dataTask(with: url) { data, response, error in
                 if error != nil {
-                    completion(nil)
+                    completion(nil, error)
                 }
                 
                 if let responseData = data {
                     if let parsedData = parseJSON(responseData, in: model) {
-                        completion(parsedData)
+                        completion(parsedData, nil)
                     }
                 }
             }

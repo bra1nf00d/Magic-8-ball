@@ -7,33 +7,6 @@
 
 import Foundation
 
-//protocol NetworkAnswerServiceDelegate {
-//    func didUpdateAnswer(_ answer: String)
-//    func didFailWithError(message errorMessage: String)
-//}
-
-
-//struct NetworkAnswerService {
-//    private let apiURL = "https://8ball.delegator.com/magic/JSON/should"
-//
-//    private let delegate: NetworkAnswerServiceDelegate?
-//    private let storage: UserDefaultAnswersProvider?
-//    // init
-//    //
-//
-//
-////    DispatchQueue.main.async {
-////        self.delegate?.didFailWithError(message: "Сheck your internet connection or add the answer yourself in settings")
-////    }
-//
-//
-////    if let storedAnswers = storage?.loadAnswers(forKey: Constants.localStorage) {
-//    //                        DispatchQueue.main.async {
-//    //                            self.delegate?.didUpdateAnswer(storedAnswers.randomElement()!)
-//    //                        }
-//    //                    }
-//}
-
 protocol AnswerServiceDelegate {
     func didUpdateAnswer(_ answer: String)
     func didFailWithError(message errorMassage: String)
@@ -55,25 +28,30 @@ struct AnswerService: AnswerServiceProvider {
     }
     
     func loadAnswer() {
-        client?.performRequestWithModel(url: "https://8ball.delegator.com/magic/JSON/should", model: AnswerData.self) { (data) in
+        client?.performRequestWithModel(url: "https://8ball.delegator.com/magic/JSON/should", model: AnswerData.self) { (data, error) in
+            if error != nil {
+                if let storedAnswer = storage?.loadAnswers(forKey: Constants.localStorage) {
+                    DispatchQueue.main.async {
+                        delegate?.didUpdateAnswer(storedAnswer.randomElement()!)
+                    }
+                } else {
+                    DispatchQueue.main.async {
+                        delegate?.didFailWithError(message: "The saved answers appear to be not found")
+                    }
+                    return
+                }
+                
+                DispatchQueue.main.async {
+                    delegate?.didFailWithError(message: error!.localizedDescription)
+                }
+            }
+            
             if let safeData = data {
                 let answer = safeData.magic.answer
                 
                 DispatchQueue.main.async {
                     delegate?.didUpdateAnswer(answer)
                 }
-            } else {
-                if let storedAnswer = storage?.loadAnswers(forKey: Constants.localStorage) {
-                    DispatchQueue.main.async {
-                        delegate?.didUpdateAnswer(storedAnswer.randomElement()!)
-                    }
-                    return
-                }
-                
-                DispatchQueue.main.async {
-                   delegate?.didFailWithError(message: "Сheck your internet connection or add the answer yourself in settings")
-                }
-                return
             }
         }
     }
